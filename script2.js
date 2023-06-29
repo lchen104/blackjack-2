@@ -1,3 +1,4 @@
+// initial blackjack-2 build
 class Player {
     constructor(name, age, credit) {
         this.name = name;

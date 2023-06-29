@@ -1,30 +1,64 @@
 * {
     margin: 0px;
     box-sizing: border-box;
+    /* font-family: 'Libre Baskerville', serif; */
+    /* font-family: 'Raleway', sans-serif; */
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    /* border: 1px solid black */
 }
 
 body {
     text-align: center;
-    background-image: url();
+    background-image: url(./imgs/table.png);
+    /* background-image: url(./imgs/blackjack-classic-background.jpeg); */
+    background-size: cover;
     height: 100vh;
     /* border: 1px solid black; */
     margin: 0px;
     
 }
 
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    font-size: 4rem;
+}
+
+div {
+    margin: 50px;
+}
+
 .container {
-    height: 95%;
+    height: 50%;
     /* border: 1px solid red; */
     margin: 0px;
 }
 
 img {
-    height: 150px;
+    height: 200px;
     margin: 20px 1px;
 }
 
 button {
-    width: 100px;
+    background-color: gold;
+    width: 125px;
+    height: 50px;
     padding: 5px 10px;
     margin: 10px 1px;
+    border: 2px solid black;
+}
+
+button:hover {
+    border: 1px solid white;
+}
+
+span {
+    color: red
+}
+
+p {
+    color: white;
 }

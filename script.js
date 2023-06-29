@@ -10,137 +10,158 @@ class Player {
     }
 
     newGame() {
-        // console.log(playerOne);
-        // console.log(dealer);
-        this.isAlive = true;
-        this.hasBlackjack = false;
-        this.sum = 0;
-        this.cards = [];
+        if (this.credits > 0) {
 
-        dealer.isAlive = true;
-        dealer.hasBlackjack = false;
-        dealer.sum = 0;
-        dealer.cards = [];
-        
-        dealerSumEl.textContent = "Dealer Sum:";
-        dealerMessageEl.textContent = dealer.name;
-        dealerCardsEl.innerHTML = `<img id="dealer-cards-img" src="./imgs/BACK.png">`;
+            // console.log(playerOne);
+            // console.log(dealer);
+            this.isAlive = true;
+            this.hasBlackjack = false;
+            this.sum = 0;
+            this.cards = [];
 
-        let firstCard = shuffleCards();
-        let secondCard = shuffleCards();
-        this.cards = [firstCard, secondCard];
+            dealer.isAlive = true;
+            dealer.hasBlackjack = false;
+            dealer.sum = 0;
+            dealer.cards = [];
+            
+            dealerSumEl.textContent = "Dealer Sum:";
+            dealerMessageEl.textContent = dealer.name;
+            dealerCardsEl.innerHTML = `<img id="dealer-cards-img" src="./imgs/BACK.png">`;
 
-        console.log("> " + this.cards);
-        
-        // let playerCardsEl = document.getElementById('player-cards-el');
-        playerCardsEl.innerHTML = "";
+            let firstCard = shuffleCards();
+            let secondCard = shuffleCards();
+            this.cards = [firstCard, secondCard];
 
-        // let tempCardsEl = "";
+            console.log("> " + this.cards);
+            
+            // let playerCardsEl = document.getElementById('player-cards-el');
+            playerCardsEl.innerHTML = "";
 
-       // get the card value
-       for (let i = 0; i < this.cards.length; i++) {
-        
-            playerCardsEl.innerHTML += `<img src='./imgs/${this.cards[i]}.png'>`;
-            // console.log(this.cards[i].split('-').pop());
-            // get cards value before the dash
-            // console.log(this.cards[i].split('-').shift());
+            // let tempCardsEl = "";
 
-            let card = this.cards[i].split('-').shift();
+        // get the card value
+        for (let i = 0; i < this.cards.length; i++) {
+            
+                playerCardsEl.innerHTML += `<img src='./imgs/${this.cards[i]}.png'>`;
+                // console.log(this.cards[i].split('-').pop());
+                // get cards value before the dash
+                // console.log(this.cards[i].split('-').shift());
 
-            if (card === "A") {
-                if (this.sum <= 10) {
-                    this.sum += 11;
+                let card = this.cards[i].split('-').shift();
+
+                if (card === "A") {
+                    if (this.sum <= 10) {
+                        this.sum += 11;
+                    } else {
+                        this.sum++;
+                    }
+                    // console.log(this.cards[i].sum);
+                } else if (card === "J" || card === "Q" || card === "K") {
+                    this.sum += 10;
                 } else {
-                    this.sum++;
+                    this.sum += parseInt(card); // converts string to interger
                 }
-                // console.log(this.cards[i].sum);
-            } else if (card === "J" || card === "Q" || card === "K") {
-                this.sum += 10;
-            } else {
-                this.sum += parseInt(card); // converts string to interger
-            }
 
-            console.log("Card: " + this.sum);
-            // console.log(this.card);
+                console.log("Card: " + this.sum);
+                // console.log(this.card);
 
-       }
-
-        // let playerCardsEl = document.getElementById('player-cards-el');
-        // playerCardsEl.innerHTML = tempCardsEl;
-
-    //    console.log(tempCardsEl)
-        
-        if (this.sum < 21) {
-            // console.log("less than 21 : " + this.sum);
-            playerMessageEl.textContent = "Would you like another card?";
-        } else if (this.sum === 21) {
-            // console.log("Blackjack" + this.sum);
-            playerMessageEl.textContent = "You got BLACKJACK!";
-            this.hasBlackjack = true;
-        } else {
-            // console.log("Greater than 21" + this.sum);
-            playerMessageEl.textContent = "Sorry, You BUST!";
-            this.isAlive = false;
-            this.credit -= 20;
         }
 
-       playerSumEl.textContent = "Player Sum: " + this.sum;
-       playerCreditsEl.textContent = "Player Credits: " + playerOne.credits
+            // let playerCardsEl = document.getElementById('player-cards-el');
+            // playerCardsEl.innerHTML = tempCardsEl;
+
+        //    console.log(tempCardsEl)
+            
+            if (this.sum < 21) {
+                // console.log("less than 21 : " + this.sum);
+                playerMessageEl.textContent = "Would you like another card?";
+            } else if (this.sum === 21) {
+                // console.log("Blackjack" + this.sum);
+                playerMessageEl.textContent = "You got BLACKJACK!";
+                this.hasBlackjack = true;
+            // } else {
+            //     // This code below never gets run
+            //     // console.log("Greater than 21" + this.sum);
+            //     playerMessageEl.textContent = "> Sorry, You BUST!";
+            //     this.isAlive = false;
+            //     this.credit -= 20;
+            }
+
+        playerSumEl.textContent = "Player Sum: " + this.sum;
+        playerCreditsEl.textContent = "Player Credits: " + playerOne.credits
+
+        } else {
+            playerMessageEl.textContent = "You are OUT of credits! Please add additional Funds to play."
+        }
+        
     }
 
     hit() {
-        // console.log(playerOne);
-        // console.log(dealer);
-
-        let currentCard = shuffleCards();
-
-        this.cards.push(currentCard);
-
-        console.log(this);
-
-        // this.cards.split('-').pop();
-        // get cards value before the dash
-        // console.log(this.cards.split('-').shift());
-
-        playerCardsEl.innerHTML += `<img src='./imgs/${currentCard}.png'>`;
-
-        // get cards value before the dash
-        let card = currentCard.split('-').shift();
-
-        if (card === "A") {
-            if (this.sum <= 10) {
-                this.sum += 11;
-            } else {
-                this.sum++;
-            }
-            // console.log(this.cards.sum);
-        } else if (card === "J" || card === "Q" || card === "K") {
-            this.sum += 10;
-        } else {
-            this.sum += parseInt(card); // converts string to interger
-        }
-
-        console.log("Card: " + this.sum);
-        console.log(this.card);
-
-        if (this.sum < 21) {
-            // console.log("less than 21 : " + this.sum);
-            playerMessageEl.textContent = "Would you like another card?";
-        } else if (this.sum === 21) {
-            // console.log("Blackjack" + this.sum);
-            playerMessageEl.textContent = "You got BLACKJACK!";
-            this.hasBlackjack = true;
-        } else {
-            // console.log("Greater than 21" + this.sum);
-            playerMessageEl.textContent = "Sorry, You BUST!";
+        if (this.cards.length >= 5 && this.isAlive === true) {
+            playerMessageEl.textContent = "Player WINS!";  
+            playerOne.credits += 20;
+            playerCreditsEl.textContent = "Player Credits: " + playerOne.credits;  
             this.isAlive = false;
-            this.credits -= 20;
+        } else {
+            if (this.sum > 0 && this.isAlive === true) {
+                // console.log(playerOne);
+                // console.log(dealer);
+
+                let currentCard = shuffleCards();
+
+                this.cards.push(currentCard);
+
+                console.log(this);
+
+                // this.cards.split('-').pop();
+                // get cards value before the dash
+                // console.log(this.cards.split('-').shift());
+
+                playerCardsEl.innerHTML += `<img src='./imgs/${currentCard}.png'>`;
+
+                // get cards value before the dash
+                let card = currentCard.split('-').shift();
+
+                if (card === "A") {
+                    if (this.sum <= 10) {
+                        this.sum += 11;
+                    } else {
+                        this.sum++;
+                    }
+                    // console.log(this.cards.sum);
+                } else if (card === "J" || card === "Q" || card === "K") {
+                    this.sum += 10;
+                } else {
+                    this.sum += parseInt(card); // converts string to interger
+                }
+
+                console.log("Card: " + this.sum);
+                console.log(this.card);
+
+                if (this.sum < 21) {
+                    // console.log("less than 21 : " + this.sum);
+                    playerMessageEl.textContent = "Would you like another card?";
+                } else if (this.sum === 21) {
+                    // console.log("Blackjack" + this.sum);
+                    playerMessageEl.textContent = "You got BLACKJACK!";
+                    this.hasBlackjack = true;
+                } else {
+                    // console.log("Greater than 21" + this.sum);
+                    playerMessageEl.textContent = "Sorry, You BUST!";
+                    this.isAlive = false;
+                    this.credits -= 20;
+                    playerCreditsEl.textContent = "Player Credits: " + playerOne.credits;
+
+                    dealer.credits += 20;
+                    dealerCreditsEl.textContent = "Dealer Credits: " + dealer.credits;
+                }
+                
+                // playerCardsEl = document.getElementById('player-cards-el');
+                // playerCardsEl.innerHTML += `<img src='./imgs/${currentCard}.png'>`;
+                playerSumEl.textContent = "Player Sum: " + this.sum;
+                playerCreditsEl.textContent = "Player Credits: " + playerOne.credits
+            }
         }
-        
-        // playerCardsEl = document.getElementById('player-cards-el');
-        // playerCardsEl.innerHTML += `<img src='./imgs/${currentCard}.png'>`;
-        playerSumEl.textContent = "Player Sum: " + this.sum;
-        playerCreditsEl.textContent = "Player Credits: " + playerOne.credits
     }
 
     draw() {
@@ -186,13 +207,18 @@ class Player {
             dealerMessageEl.textContent = "Dealer Stands!";
         } else if (this.sum === 21) {
             // console.log("Blackjack" + this.sum);
-            dealerMessageEl.textContent = "Dealer got BLACKJACK!";
+            dealerMessageEl.textContent = "Dealer has BLACKJACK!";
             this.hasBlackjack = true;
         } else {
             // console.log("Greater than 21:" + this.sum);
             dealerMessageEl.textContent = "Dealer BUST!";
+            playerMessageEl.textContent = "Player WINS!";
             console.log(dealer);
             this.isAlive = false;
+            playerOne.credits += 20;
+            dealer.credits -= 20;
+            playerCreditsEl.textContent = "Player Credits: " + playerOne.credits;
+            dealerCreditsEl.textContent = "Dealer Credits: " + dealer.credits;
         }
         
         // let dealerCardsEl = document.getElementById('dealer-cards-el');
@@ -203,10 +229,36 @@ class Player {
 
     stand() {
         // console.log(playerOne);
-        console.log(dealer);
-        dealerCardsEl.innerHTML = "";
-        playerMessageEl.textContent = "Player Stands!";
-        dealer.draw();
+        if (this.sum > 0 && this.isAlive === true) {
+            console.log(dealer);
+            dealerCardsEl.innerHTML = "";
+            playerMessageEl.textContent = "Player Stands!";
+            dealer.draw();
+            if (dealer.isAlive && playerOne.isAlive) {
+                if (dealer.sum === playerOne.sum) {
+                    dealerMessageEl.textContent = "It's a PUSH!";
+                    playerMessageEl.textContent = "It's a PUSH";
+                } else if (dealer.sum > playerOne.sum) {
+                    dealerMessageEl.textContent = "Dealer WINS!";
+                    dealer.credits += 20;
+                    dealerCreditsEl.textContent = "Dealer Credits: " + dealer.credits;
+
+                    playerMessageEl.textContent = "Sorry, YOU LOSE!";
+                    playerOne.credits -= 20;
+                    playerCreditsEl.textContent = "Player Credits: " + playerOne.credits;
+                } else {
+                    dealerMessageEl.textContent = "Dealer LOST!!";
+                    dealer.credits -= 20;
+                    dealerCreditsEl.textContent = "Dealer Credits: " + dealer.credits;
+
+                    playerMessageEl.textContent = "Player WINS!";  
+                    playerOne.credits += 20;
+                    playerCreditsEl.textContent = "Player Credits: " + playerOne.credits;   
+                }
+            }
+            this.isAlive = false;
+            dealer.isAlive = false;
+        }
     }
 
     addCredit() {
