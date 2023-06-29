@@ -1,0 +1,30 @@
+* {
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    background-image: url();
+    height: 100vh;
+    /* border: 1px solid black; */
+    margin: 0px;
+    
+}
+
+.container {
+    height: 95%;
+    /* border: 1px solid red; */
+    margin: 0px;
+}
+
+img {
+    height: 150px;
+    margin: 20px 1px;
+}
+
+button {
+    width: 100px;
+    padding: 5px 10px;
+    margin: 10px 1px;
+}
