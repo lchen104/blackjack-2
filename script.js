@@ -2,16 +2,19 @@ class Player {
     constructor(name, age, credits) {
         this.name = name;
         this.age = age;
-        this.credits = credits;
+        this.credits = 0;
         this.isAlive = true;
         this.hasBlackjack = false;
         this.sum = 0;
-        this.cards = []
+        this.cards = [];
+        this.lifetimeCredits = 0;
     }
 
     newGame() {
+        if (this.lifetimeCredits > 500) {
+            alert('Are you sure you want to play? You lost $' + this.lifetimeCredits + " already!")
+        }
         if (this.credits > 0) {
-
             // console.log(playerOne);
             // console.log(dealer);
             this.isAlive = true;
@@ -93,16 +96,11 @@ class Player {
         } else {
             playerMessageEl.textContent = "You are OUT of credits! Please add additional Funds to play."
         }
-        
+        // stores remaining credit to local storage
+        localStorage.setItem('credits', this.credits);
     }
 
     hit() {
-        if (this.cards.length >= 5 && this.isAlive === true) {
-            playerMessageEl.textContent = "Player WINS!";  
-            playerOne.credits += 20;
-            playerCreditsEl.textContent = "Player Credits: " + playerOne.credits;  
-            this.isAlive = false;
-        } else {
             if (this.sum > 0 && this.isAlive === true) {
                 // console.log(playerOne);
                 // console.log(dealer);
@@ -136,9 +134,15 @@ class Player {
                 }
 
                 console.log("Card: " + this.sum);
-                console.log(this.card);
+                console.log(this.cards);
 
-                if (this.sum < 21) {
+                if (this.cards.length > 4 && this.isAlive === true) {
+                    console.log("Card Length: " + this.cards.length)
+                    playerMessageEl.textContent = "You got 5 CARDS! Player WINS!";  
+                    playerOne.credits += 20;
+                    playerCreditsEl.textContent = "Player Credits: " + playerOne.credits;  
+                    this.isAlive = false;
+                } else if (this.sum < 21) {
                     // console.log("less than 21 : " + this.sum);
                     playerMessageEl.textContent = "Would you like another card?";
                 } else if (this.sum === 21) {
@@ -161,7 +165,7 @@ class Player {
                 playerSumEl.textContent = "Player Sum: " + this.sum;
                 playerCreditsEl.textContent = "Player Credits: " + playerOne.credits
             }
-        }
+
     }
 
     draw() {
@@ -198,7 +202,7 @@ class Player {
         }
 
         console.log("Card: " + this.sum);
-        console.log(this.card);
+        console.log(this.cards);
 
         if (this.sum < 17) {
             // console.log("less than 17 : " + this.sum);
@@ -263,15 +267,27 @@ class Player {
 
     addCredit() {
         console.log(playerOne);
+        // console.log("LTC:" + parseInt(localStorage.getItem('lifetimeCredits')));
+        this.lifetimeCredits = parseInt(localStorage.getItem('lifetimeCredits'));
+        this.credits = parseInt(localStorage.getItem('credits'));
         this.credits += 20;
         playerCreditsEl.textContent = "Player Credits: " + this.credits
         console.log(this.credits);
+        this.lifetimeCredits += 20;
+        localStorage.setItem('lifetimeCredits', this.lifetimeCredits);
+        localStorage.setItem('credits', this.credits);
     }
 }
 
 
 const dealer = new Player('Dealer', 21, 100);
-const playerOne = new Player('Leo', 52, 100);
+const playerOne = new Player('Leo', 52);
+
+// loads items in localStorage into object variables
+playerOne.lifetimeCredits = parseInt(localStorage.getItem('lifetimeCredits'));
+playerOne.credits = parseInt(localStorage.getItem('credits'));
+
+console.log("Player Lifetime Credit: $" + playerOne.lifetimeCredits);
 
 let dealerMessageEl = document.getElementById('dealer-message-el');
 // dealerMessageEl.textContent = dealer.name;
