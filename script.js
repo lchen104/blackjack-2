@@ -46,10 +46,7 @@ class Player {
         for (let i = 0; i < this.cards.length; i++) {
             
                 playerCardsEl.innerHTML += `<img src='./imgs/${this.cards[i]}.png'>`;
-                // console.log(this.cards[i].split('-').pop());
-                // get cards value before the dash
-                // console.log(this.cards[i].split('-').shift());
-
+                // gets card value after the dash
                 let card = this.cards[i].split('-').shift();
 
                 if (card === "A") {
@@ -70,9 +67,6 @@ class Player {
 
         }
 
-            // let playerCardsEl = document.getElementById('player-cards-el');
-            // playerCardsEl.innerHTML = tempCardsEl;
-
         //    console.log(tempCardsEl)
             
             if (this.sum < 21) {
@@ -82,12 +76,6 @@ class Player {
                 // console.log("Blackjack" + this.sum);
                 playerMessageEl.textContent = "You got BLACKJACK!";
                 this.hasBlackjack = true;
-            // } else {
-            //     // This code below never gets run
-            //     // console.log("Greater than 21" + this.sum);
-            //     playerMessageEl.textContent = "> Sorry, You BUST!";
-            //     this.isAlive = false;
-            //     this.credit -= 20;
             }
 
         playerSumEl.textContent = "Player Sum: " + this.sum;
@@ -108,17 +96,12 @@ class Player {
     hit() {
             if (this.sum > 0 && this.isAlive === true) {
                 // console.log(playerOne);
-                // console.log(dealer);
 
                 let currentCard = shuffleCards();
 
                 this.cards.push(currentCard);
 
                 console.log(this);
-
-                // this.cards.split('-').pop();
-                // get cards value before the dash
-                // console.log(this.cards.split('-').shift());
 
                 playerCardsEl.innerHTML += `<img src='./imgs/${currentCard}.png'>`;
 
@@ -157,16 +140,16 @@ class Player {
                 } else {
                     // console.log("Greater than 21" + this.sum);
                     playerMessageEl.textContent = "Sorry, You BUST!";
+
                     this.isAlive = false;
                     this.credits -= 20;
+
                     playerCreditsEl.textContent = "Player Credits: " + playerOne.credits;
 
                     dealer.credits += 20;
                     dealerCreditsEl.textContent = "Dealer Credits: " + dealer.credits;
                 }
                 
-                // playerCardsEl = document.getElementById('player-cards-el');
-                // playerCardsEl.innerHTML += `<img src='./imgs/${currentCard}.png'>`;
                 playerSumEl.textContent = "Player Sum: " + this.sum;
                 playerCreditsEl.textContent = "Player Credits: " + playerOne.credits
             }
@@ -178,15 +161,9 @@ class Player {
 
         let currentCard = shuffleCards();
 
-        // unshift to display the correct order of cards delt from the cards array
-        // this.cards.unshift(currentCard);
         this.cards.push(currentCard);
-        // console.log(this);
 
-        //////////////////////////////////////////////
-        // get the card value
-        // console.log(currentCard.split('-').pop());
-        // console.log(currentCard.split('-').shift());
+        // console.log(this);
 
         dealerCardsEl.innerHTML += `<img src='./imgs/${currentCard}.png'>`;
 
@@ -222,22 +199,25 @@ class Player {
             // console.log("Greater than 21:" + this.sum);
             dealerMessageEl.textContent = "Dealer BUST!";
             playerMessageEl.textContent = "Player WINS!";
+
             console.log(dealer);
+
             this.isAlive = false;
+
             playerOne.credits += 20;
             dealer.credits -= 20;
+
             playerCreditsEl.textContent = "Player Credits: " + playerOne.credits;
             dealerCreditsEl.textContent = "Dealer Credits: " + dealer.credits;
         }
         
-        // let dealerCardsEl = document.getElementById('dealer-cards-el');
-        // dealerCardsEl.innerHTML += `<img src='./imgs/${currentCard}.png'>`;
         dealerSumEl.textContent = "Dealer Sum: " + this.sum;
         dealerCreditsEl.textContent = "Dealer Credits: " + this.credits
     }
 
     stand() {
         // console.log(playerOne);
+
         if (this.sum > 0 && this.isAlive === true) {
             console.log(dealer);
             dealerCardsEl.innerHTML = "";
@@ -290,10 +270,11 @@ class Player {
 const dealer = new Player('Dealer', 21, 100);
 const playerOne = new Player('Leo', 52);
 
-        // localStorage.setItem('lifetimeCredits', this.lifetimeCredits);
-        localStorage.setItem('lifetimeCredits', JSON.stringify(playerOne.lifetimeCredits));
-        // localStorage.setItem('credits', this.credits);
-        localStorage.setItem('credits', JSON.stringify(playerOne.credits));
+// localStorage.setItem('lifetimeCredits', this.lifetimeCredits);
+localStorage.setItem('lifetimeCredits', JSON.stringify(playerOne.lifetimeCredits));
+
+// localStorage.setItem('credits', this.credits);
+localStorage.setItem('credits', JSON.stringify(playerOne.credits));
 
 // loads items in localStorage into object variables
 playerOne.lifetimeCredits = parseInt(localStorage.getItem('lifetimeCredits'));
@@ -305,7 +286,6 @@ playerOne.credits = parseInt(localStorage.getItem('credits'));
 console.log("Player Lifetime Credit: $" + playerOne.lifetimeCredits);
 
 let dealerMessageEl = document.getElementById('dealer-message-el');
-// dealerMessageEl.textContent = dealer.name;
 // console.log(dealerMessageEl);
 
 let playerMessageEl = document.getElementById('player-message-el');
@@ -328,26 +308,36 @@ let dealerCreditsEl = document.getElementById('dealer-credits-el');
 dealerCreditsEl.textContent = "Dealer Credits: " + dealer.credits
 
 
-// Builds an array of 52 cards and loads it into a new array and returns a random card out of the new array
+// Builds an array of 52 cards and load it into a new array and returns a random card out of the new array
 const shuffleCards = () => {
+    // Create the FACE value cards array
     let face = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+
+    // Create the SUIT cards array
     let suit = ["C", "D", "H", "S"];
+
+    // Create a new DECK array for the 52 cards created 
     let deck = [];
 
+    // Outter loop will append each suit array [C, D, H, S] value to the end of the card image name
     for (let i = 0; i < suit.length; i++) {
+        // Inner loop will append each face array [A, 2, 3...etc] value tot he beginning of the card image name
         for (let j = 0; j < face.length; j++) {
             deck.push(face[j] + "-" + suit[i]);
         }
     }
 
+    // Create a new variable myCard to store a random number between 0-51 so we can return a 
     let myCard = Math.floor(Math.random() * deck.length);
     // console.log("CardArrayNum: " + myCard);
     // console.log("Card: " + deck[myCard]);
+
+    // Returns a random card from the DECK array. Example: [2-C] for 2 of clubs, or [A-S] for Ace of Spades
     return deck[myCard];
 }
 
 
-
+// Listen for click event
 document.addEventListener('click', (e) => {
     console.log(e.target)
     switch (e.target.textContent) {

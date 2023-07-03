@@ -1,8 +1,8 @@
-# Blackjack 2
+# Blackjack 2 
 ** Features **
 
 1. New Game button - Starts a new game
-2. HI or Stand button
+2. HIT or Stand button
 3. Add Credit button - Game wont start until credit is added
 4. Reset button - WIll reset the game similar to resfreshing the browser
 5. Added a Lifetime Credits variable to store a players lifetime credits spent in the browsers localStorage
@@ -16,9 +16,10 @@
 
 ---
 
-- I've used the DOM to add an even listener to listen for the e.target.textContent fot he button pressed.
+- Add an even listener to listen for the e.target.textContent for the button pressed.
 
-- ShuffleCards function - I've created 3 arrays:
+## ShuffleCards Function - Created 3 arrays:
+
 1. Face values (A, 2, 3, 4, 5, 6, 7, 8, 9)
 2. Suit value (Clubs, Diamonds, Hearts, Spades)
 3. Decks array to hold the 52 cards made using Face/Suit array
@@ -28,13 +29,13 @@
 
 ---
 
-Current problem:
+**Current problem: **
 
 - Bug FIXED: Cant start game until you set the credits and lifetimeCredits to value 0 for each in chrome inspector tool.  Currently displays Player Credits: NaN and credits and lifetimeCredits values is null in chrome inspector tools in localStorage. 7/3/2023
 
 - Bug FIXED: when player gets 5 cards and BUSTS at 5th card, winner still wins 7/2/2023
 
-[title](https://fabulous-rugelach-81c20d.netlify.app)
+URL: [Blackjack 2](https://fabulous-rugelach-81c20d.netlify.app)
 
 Created by: Leo Chen
 Cards image credit to Kenny Yip
