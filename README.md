@@ -28,3 +28,6 @@
 
 [title](https://fabulous-rugelach-81c20d.netlify.app)
 
+Created by: Leo Chen
+Cards image credit to Kenny Yip
+
