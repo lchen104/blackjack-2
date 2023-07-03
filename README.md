@@ -26,6 +26,12 @@
 5. Math.random() and Math.floor to return a random card from the ShuffleCards function
 6. After drawing the cards, a function will read the value of the card image name before the dash and compute
 
+---
+
+Current problem:
+- Cant start game until you set the credits and lifetimeCredits to value 0 for each in chrome inspector tool.  Currently displays Player Credits: NaN and credits and lifetimeCredits values is null in chrome inspector tools in localStorage.
+
+---
 
 - Bug FIXED: when player gets 5 cards and BUSTS at 5th card, winner still wins 7/2/2023
 

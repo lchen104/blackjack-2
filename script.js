@@ -97,7 +97,12 @@ class Player {
             playerMessageEl.textContent = `You have ${this.credits} credit remaining. Please add additional CREDIT to play.`;
         }
         // stores remaining credit to local storage
-        localStorage.setItem('credits', this.credits);
+        // localStorage.setItem('credits', this.credits);
+        localStorage.setItem('credits', JSON.stringify(this.credits));
+
+        // localStorage.setItem('lifetimeCredits', this.lifetimeCredits);
+        localStorage.setItem('lifetimeCredits', JSON.stringify(this.lifetimeCredits));
+
     }
 
     hit() {
@@ -274,8 +279,10 @@ class Player {
         playerCreditsEl.textContent = "Player Credits: " + this.credits
         console.log(this.credits);
         this.lifetimeCredits += 20;
-        localStorage.setItem('lifetimeCredits', this.lifetimeCredits);
-        localStorage.setItem('credits', this.credits);
+        // localStorage.setItem('lifetimeCredits', this.lifetimeCredits);
+        localStorage.setItem('lifetimeCredits', JSON.stringify(this.lifetimeCredits));
+        // localStorage.setItem('credits', this.credits);
+        localStorage.setItem('credits', JSON.stringify(this.credits));
     }
 }
 
@@ -285,7 +292,10 @@ const playerOne = new Player('Leo', 52);
 
 // loads items in localStorage into object variables
 playerOne.lifetimeCredits = parseInt(localStorage.getItem('lifetimeCredits'));
+// console.log(typeof playerOne.lifetimeCredits);
+
 playerOne.credits = parseInt(localStorage.getItem('credits'));
+// console.log(typeof playerOne.credits);
 
 console.log("Player Lifetime Credit: $" + playerOne.lifetimeCredits);
 
