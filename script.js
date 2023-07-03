@@ -290,6 +290,11 @@ class Player {
 const dealer = new Player('Dealer', 21, 100);
 const playerOne = new Player('Leo', 52);
 
+        // localStorage.setItem('lifetimeCredits', this.lifetimeCredits);
+        localStorage.setItem('lifetimeCredits', JSON.stringify(playerOne.lifetimeCredits));
+        // localStorage.setItem('credits', this.credits);
+        localStorage.setItem('credits', JSON.stringify(playerOne.credits));
+
 // loads items in localStorage into object variables
 playerOne.lifetimeCredits = parseInt(localStorage.getItem('lifetimeCredits'));
 // console.log(typeof playerOne.lifetimeCredits);
