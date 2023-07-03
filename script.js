@@ -136,7 +136,7 @@ class Player {
                 console.log("Card: " + this.sum);
                 console.log(this.cards);
 
-                if (this.cards.length > 4 && this.isAlive === true) {
+                if (this.cards.length > 4 && this.sum <= 21 && this.isAlive === true) {
                     console.log("Card Length: " + this.cards.length)
                     playerMessageEl.textContent = "You got 5 CARDS! Player WINS!";  
                     playerOne.credits += 20;

@@ -26,6 +26,9 @@
 5. Math.random() and Math.floor to return a random card from the ShuffleCards function
 6. After drawing the cards, a function will read the value of the card image name before the dash and compute
 
+
+- Bug FIXED: when player gets 5 cards and BUSTS at 5th card, winner still wins 7/2/2023
+
 [title](https://fabulous-rugelach-81c20d.netlify.app)
 
 Created by: Leo Chen
