@@ -94,7 +94,7 @@ class Player {
         playerCreditsEl.textContent = "Player Credits: " + playerOne.credits
 
         } else {
-            playerMessageEl.textContent = "You are OUT of credits! Please add additional Funds to play."
+            playerMessageEl.textContent = `You have ${this.credits} credit remaining. Please add additional CREDIT to play.`;
         }
         // stores remaining credit to local storage
         localStorage.setItem('credits', this.credits);
@@ -334,7 +334,7 @@ const shuffleCards = () => {
 
 
 document.addEventListener('click', (e) => {
-
+    console.log(e.target)
     switch (e.target.textContent) {
         case 'New Game':
             // newGame();
