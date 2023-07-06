@@ -31,6 +31,8 @@
 
 **Current problem:
 
+- Bug FIXED: localStorage values LifetimeCredits and Credits were getting reset when reset button or browser page was refreshed. - 07/05/2023 
+
 - Bug FIXED: Cant start game until you set the credits and lifetimeCredits to value 0 for each in chrome inspector tool.  Currently displays Player Credits: NaN and credits and lifetimeCredits values is null in chrome inspector tools in localStorage. 7/3/2023
 
 - Bug FIXED: when player gets 5 cards and BUSTS at 5th card, winner still wins 7/2/2023

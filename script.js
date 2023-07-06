@@ -270,11 +270,17 @@ class Player {
 const dealer = new Player('Dealer', 21, 100);
 const playerOne = new Player('Leo', 52);
 
-// localStorage.setItem('lifetimeCredits', this.lifetimeCredits);
-localStorage.setItem('lifetimeCredits', JSON.stringify(playerOne.lifetimeCredits));
+if (localStorage.getItem("lifetimeCredits") === null || localStorage.getItem("credits") === null) {
+    // localStorage.setItem('lifetimeCredits', this.lifetimeCredits);
+    localStorage.setItem('lifetimeCredits', JSON.stringify(playerOne.lifetimeCredits));
+    
+    // console.log(localStorage.getItem("lifetimeCredits"));
 
-// localStorage.setItem('credits', this.credits);
-localStorage.setItem('credits', JSON.stringify(playerOne.credits));
+    // localStorage.setItem('credits', this.credits);
+    localStorage.setItem('credits', JSON.stringify(playerOne.credits));
+
+    // console.log(localStorage.getItem("credits"));
+  }
 
 // loads items in localStorage into object variables
 playerOne.lifetimeCredits = parseInt(localStorage.getItem('lifetimeCredits'));
