@@ -11,9 +11,9 @@
 body {
     text-align: center;
     background-image: url(./imgs/table.png);
-    /* background-image: url(./imgs/blackjack-classic-background.jpeg); */
+    background-image: url(./imgs/blackjack-classic-background.jpeg);
     background-size: cover;
-    height: 100vh;
+    height: 10vh;
     /* border: 1px solid black; */
     margin: 0px;
     
@@ -23,7 +23,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 70px;
     font-size: 4rem;
 }
 
