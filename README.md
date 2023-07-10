@@ -9,14 +9,14 @@
 6. Added the available credits to localStorage so a use's credit is still available with browser is refreshed
 7. Added a ShuffleCards() function to build a deck of (52) cards and load into an array and returns a random card into a players cards array. And than extrack the cards value from the image name it previously created into a players cards array.
 8. Player automatically wins when they draw 5 cards without going over 21
-9. If the player and deal gets a tie, its a PUSH.
+9. If the player and dealer gets a tie, it's a PUSH.
 10. Dealer MUST draw another card when dealer total is less than 17
 11. When player first draws an ace card, if player current cards total less than or equal to 10, player's ace card value will be set to 11. If current card value is over 10, player card value will be set to 1
 12. All Jack, Queen and King card values are set to 10
 
 ---
 
-- Add an even listener to listen for the e.target.textContent for the button pressed.
+- Add an event listener to listen for the e.target.textContent for the button pressed.
 
 ## ShuffleCards Function - Created 3 arrays:
 
@@ -33,7 +33,7 @@
 
 - Bug FIXED: localStorage values LifetimeCredits and Credits were getting reset when reset button or browser page was refreshed. - 07/05/2023 
 
-- Bug FIXED: Cant start game until you set the credits and lifetimeCredits to value 0 for each in chrome inspector tool.  Currently displays Player Credits: NaN and credits and lifetimeCredits values is null in chrome inspector tools in localStorage. 7/3/2023
+- Bug FIXED: Can't start game until you set the credits and lifetimeCredits to value 0 for each in chrome inspector tool.  Currently displays Player Credits: NaN and credits and lifetimeCredits values is null in chrome inspector tools in localStorage. 7/3/2023
 
 - Bug FIXED: when player gets 5 cards and BUSTS at 5th card, winner still wins 7/2/2023
 
@@ -52,10 +52,11 @@ Load game will create 2 new key/value pair (lifetimeCredit and credits) in local
 8. Display the player info and store lifetimeCredits and credits to localStorage
 9. Player can choose to HIT or Stand
 
-** Added 2 additional checks initially:
+** Added 3 additional checks initially:
 
-1. Check if lifetimeCredit greater than 500 (To remind the user how much they have added funds)
+1. Check if lifetimeCredit greater than 500 (To remind the user how much funds they have added in their lifetime)
 2. Check if the player has any funds to play
+3. Added a check to see if lifetimeCredit and credits in the localStorage has already been created. If they haven't been created, create them. This was to prevent the values from being overwritten each time user refreshes page or clicking reset button in the blackjack game.
 
 
 Created by: Leo Chen
