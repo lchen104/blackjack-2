@@ -27,9 +27,6 @@
 - CSS
 - Javascript
 
-# Future Enhancements
-- Add Alien beaming up Ramen at intro
-- Add Star Wars intro scroll at startup
 
 # Blackjack 2 
 ** Features **
