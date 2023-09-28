@@ -1,3 +1,36 @@
+# Screenshot 1
+![1](imgs/thumb1.png)
+
+# Screenshot 2
+![2](imgs/thumb2.png)
+
+# Screenshot 3
+![3](imgs/thumb3.png)
+
+# Screenshot 14
+![4](imgs/thumb4.png)
+
+# Screenshot 5
+![5](imgs/thumb5.png)
+
+# Screenshot 6
+![6](imgs/thumb6.png)
+
+# Screenshot 5
+![7](imgs/thumb7.png)
+
+# Screenshot 6
+![8](imgs/thumb8.png)
+
+# Technologies Used
+- HTML
+- CSS
+- Javascript
+
+# Future Enhancements
+- Add Alien beaming up Ramen at intro
+- Add Star Wars intro scroll at startup
+
 # Blackjack 2 
 ** Features **
 
