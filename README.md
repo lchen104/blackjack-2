@@ -92,3 +92,5 @@ Load game will create 2 new key/value pair (lifetimeCredit and credits) in local
 Created by: Leo Chen
 Cards image credit to Kenny Yip
 
+# Blackjack v1
+[Blackjack v1] (https://leochen-blackjack-v1.netlify.app/)
