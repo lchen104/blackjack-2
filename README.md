@@ -7,7 +7,7 @@
 # Screenshot 3
 ![3](imgs/thumb3.png)
 
-# Screenshot 14
+# Screenshot 4
 ![4](imgs/thumb4.png)
 
 # Screenshot 5
@@ -16,10 +16,10 @@
 # Screenshot 6
 ![6](imgs/thumb6.png)
 
-# Screenshot 5
+# Screenshot 7
 ![7](imgs/thumb7.png)
 
-# Screenshot 6
+# Screenshot 8
 ![8](imgs/thumb8.png)
 
 # Technologies Used
