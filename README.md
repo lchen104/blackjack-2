@@ -94,3 +94,4 @@ Cards image credit to Kenny Yip
 
 # Blackjack v1
 [Blackjack v1] (https://leochen-blackjack-v1.netlify.app/)
+[Blackjack v1 - Github] (https://github.com/lchen104/blackjack)
